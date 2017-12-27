@@ -93,6 +93,7 @@ export class VarianttableComponent implements OnInit, AfterViewInit {
         this.loading = false;
       },
       err => this.error = err);
+    // @TODO improve error handling & messaging
     this.termChartComp.plot();
   }
 

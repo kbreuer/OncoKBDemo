@@ -1,11 +1,12 @@
 <div class="right">
+	
 	<form (ngSubmit)="getByEntrezGeneId()">
-		<mat-form-field>
-		<button type="submit" mat-button>
-			<i class="fa fa-search" aria-hidden="true"></i>
-		</button>
-		<input matInput type="number" placeholder="Enter Entrez Gene ID"
-			[(ngModel)]="entrezGeneId" name="entrezGeneId" /> </mat-form-field>
+		<mat-form-field>	
+			<button type="submit" mat-button>
+				<i class="fa fa-search" aria-hidden="true"> Entrez Gene ID:</i>
+			</button>
+			<input matInput type="number" [(ngModel)]="entrezGeneId" name="entrezGeneId" /> 
+		</mat-form-field>
 	</form>
 </div>
 
@@ -19,8 +20,19 @@
 
 <!-- Huh. If I try to add *ngIf to the following div, it screws up pagination and sorting.  -->
 <div>
-
 	<div class="mat-table-container column">
+		
+		<!-- FILTER -- probably unnecessary
+			<div class="mat-table-header">
+				<mat-form-field> <input matInput
+					(keyup)="applyFilter($event.target.value)" placeholder="Filter">
+				</mat-form-field>
+			</div>
+		-->
+			
+		<mat-paginator [length]="resultLength" [pageSize]="10"
+			[pageSizeOptions]="[10, 20, 50, 100]"> </mat-paginator>
+	
 		<mat-table [dataSource]="dataSource" matSort> 
 			<!-- Alteration Column -->
 			<ng-container matColumnDef="alteration"> 
@@ -55,15 +67,6 @@
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
 		</mat-table>
-
-		<div class="mat-table-header">
-			<mat-form-field> <input matInput
-				(keyup)="applyFilter($event.target.value)" placeholder="Filter">
-			</mat-form-field>
-		</div>
-
-		<mat-paginator [length]="resultLength" [pageSize]="10"
-			[pageSizeOptions]="[10, 20, 50, 100]"> </mat-paginator>
 
 	</div>
 

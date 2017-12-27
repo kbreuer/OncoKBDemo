@@ -12,7 +12,6 @@
 }
 
 .mat-form-field {
-  font-size: 12px;
   width: 100%;
 }
 
@@ -21,11 +20,20 @@
 	min-width: 10px;
 }
 
+.mat-header-cell {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.mat-input-element {
+  min-height: 32px;
+}
+
 .right {
   display: block;
+  font-size: 14px;
   padding: 20px;
   min-height: 64px;
-  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -44,8 +52,8 @@
   padding: 30px;
 }
 
-.error {
+.error {	
+	font-size: 16px;
 	padding: 30px;
 	color: red;
-	font-size: 12px;
 }
