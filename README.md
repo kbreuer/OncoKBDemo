@@ -8,7 +8,7 @@ Angular CLI can be installed using npm, which requires Node.js >=v6.9.x and npm 
 
 `curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -sudo apt install -y nodejs`
 
-`npm install -g @angular/cli`
+`sudo npm install -g @angular/cli --unsafe-perm=true`
 
 ## Development server
 
