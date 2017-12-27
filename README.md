@@ -1,6 +1,8 @@
-# Oncokb
+# OncoKB Demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+
+It loads variant data from OncoKB and displays them in a table.
 
 ## Development server
 
