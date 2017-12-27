@@ -1,5 +1,7 @@
 import { AppPage } from './app.po';
 
+// @TODO write MORE!
+
 describe('oncokb App', () => {
   let page: AppPage;
 
@@ -9,6 +11,6 @@ describe('oncokb App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Welcome to OncoKB Variant Display!');
   });
 });

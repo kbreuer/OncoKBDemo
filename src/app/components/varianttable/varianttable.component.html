@@ -1,0 +1,74 @@
+<div class="right">
+	<form (ngSubmit)="getByEntrezGeneId()">
+		<mat-form-field>
+		<button type="submit" mat-button>
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</button>
+		<input matInput type="number" placeholder="Enter Entrez Gene ID"
+			[(ngModel)]="entrezGeneId" name="entrezGeneId" /> </mat-form-field>
+	</form>
+</div>
+
+<div *ngIf="error" class="error">
+	An error occurred. Please check your input and try again.
+</div>
+
+<div *ngIf="loading && !error" class="center">
+   <mat-spinner></mat-spinner>
+</div>
+
+<!-- Huh. If I try to add *ngIf to the following div, it screws up pagination and sorting.  -->
+<div>
+
+	<div class="mat-table-container column">
+		<mat-table [dataSource]="dataSource" matSort> 
+			<!-- Alteration Column -->
+			<ng-container matColumnDef="alteration"> 
+				<mat-header-cell mat-sort-header *matHeaderCellDef> Alteration </mat-header-cell> 
+				<mat-cell *matCellDef="let variant"> {{variant.alteration}} </mat-cell> 
+			</ng-container> 
+			<!-- HUGO Symbol Column -->
+			<ng-container matColumnDef="hugo"> 
+				<mat-header-cell mat-sort-header *matHeaderCellDef> HUGO Symbol </mat-header-cell> 
+				<mat-cell *matCellDef="let variant"> {{variant.gene.hugoSymbol}} </mat-cell> 
+			</ng-container> 
+			<!-- Entrez Gene ID Column -->
+			<ng-container matColumnDef="entrez"> 
+				<mat-header-cell mat-sort-header *matHeaderCellDef> Entrez Gene ID </mat-header-cell> 
+				<mat-cell *matCellDef="let variant"> {{variant.gene.entrezGeneId}} </mat-cell>
+			</ng-container> 
+			<!-- Name Column --> 
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Name </mat-header-cell> 
+				<mat-cell mat-sort-header *matCellDef="let variant"> {{variant.gene.name}} </mat-cell> 
+			</ng-container> 
+			<!-- Oncogene/TSG Column -->
+			<ng-container matColumnDef="oncoOrTsg" *ngIf="isOncogeneOrTsg">
+				<mat-header-cell *matHeaderCellDef> OncoGene/TSG </mat-header-cell> 
+				<mat-cell
+					*matCellDef="let variant">
+					<div>
+						<i class="fa fa-check" aria-hidden="true"></i>
+					</div>
+				</mat-cell> 
+			</ng-container> 
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
+		</mat-table>
+
+		<div class="mat-table-header">
+			<mat-form-field> <input matInput
+				(keyup)="applyFilter($event.target.value)" placeholder="Filter">
+			</mat-form-field>
+		</div>
+
+		<mat-paginator [length]="resultLength" [pageSize]="10"
+			[pageSizeOptions]="[10, 20, 50, 100]"> </mat-paginator>
+
+	</div>
+
+	<div class="column">
+		<app-termchart></app-termchart>
+	</div>
+
+</div>
