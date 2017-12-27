@@ -4,6 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 It loads variant data from OncoKB and displays them in a table.
 
+Angular CLI can be installed using npm, which requires Node.js >=v6.9.x and npm >=v3.x.x:
+
+`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -sudo apt install -y nodejs`
+
+`npm install -g @angular/cli`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
